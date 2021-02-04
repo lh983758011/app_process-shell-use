@@ -13,12 +13,15 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText mCmdInputEt;
     private Button mRunShellBtn;
+    private Button mProcessBtn;
     private TextView mOutputTv;
 
     private void initView(){
         mCmdInputEt = findViewById(R.id.et_cmd);
         mRunShellBtn = findViewById(R.id.btn_runshell);
         mOutputTv = findViewById(R.id.tv_output);
+        mProcessBtn = findViewById(R.id.btn_process);
+
     }
 
     @Override
@@ -35,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 runShell(cmd);
+            }
+        });
+        mProcessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runShell("ps -A | grep app_process");
             }
         });
     }
